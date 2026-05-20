@@ -1,0 +1,54 @@
+title: Vegetariska Soppor
+subtitle: Från nybörjare till mästerliga smaker i det vegetariska köket
+author: Erland Lindmark
+language: sv
+difficulty: beginner-to-experienced
+audience: Nybörjare som vill bli experter på vegetariska soppor
+book_type: practical_textbook_cookbook
+edition: '1'
+version: '1.2'
+date: '2026-05-20'
+rights: All rights reserved
+publisher: ''
+cover_image: assets/cover/cover.png
+identifier: urn:uuid:95adc03e-5b17-4653-83e2-8326ed6d472d
+creator_role: aut
+subject: Vegetarisk matlagning; soppor; vardagsmat
+description: En praktisk svensk lärobok och kokbok om vegetariska soppor, från nybörjarteknik
+  till egen signatursoppa.
+project_slug: vegetariska-soppor
+zip_naming:
+  initial: vegetariska-soppor-projekt.zip
+  chapter_update: vegetariska-soppor-projekt-kapitel-NN.zip
+chapters:
+- chapters/00-inledning.md
+- chapters/det-forsta-soppkoket-01.md
+- chapters/vardagens-trygga-gronsakssoppor-02.md
+- chapters/kramiga-soppor-utan-krangel-03.md
+- chapters/tomat-syra-och-sotma-04.md
+- chapters/grona-soppor-som-smakar-mer-05.md
+- chapters/svamp-lok-och-umami-06.md
+- chapters/kryddor-hetta-och-varme-07.md
+- chapters/linser-bonor-och-mattande-soppor-08.md
+- chapters/nordiska-vardagssoppor-09.md
+- chapters/medelhavsinspirerade-soppor-10.md
+- chapters/asiatiskt-inspirerade-vardagssoppor-11.md
+- chapters/toppingar-textur-och-tillbehor-12.md
+- chapters/nar-soppan-blir-fel-13.md
+- chapters/sasong-planering-och-smart-vardagsmat-14.md
+- chapters/fran-recept-till-egen-signatursoppa-15.md
+exports:
+  epub:
+    enabled: true
+    include_text_toc: false
+    airy_layout: true
+    render_markdown_styles: true
+  pdf:
+    enabled: true
+    include_toc_before_introduction: true
+    render_markdown_styles: true
+  docx:
+    enabled: true
+    render_markdown_styles: true
+  markdown:
+    enabled: true

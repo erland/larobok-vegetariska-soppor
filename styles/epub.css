@@ -1,0 +1,48 @@
+body {
+  font-family: serif;
+  line-height: 1.65;
+  margin: 5%;
+}
+p {
+  margin: 0 0 0.9em 0;
+}
+h1, h2, h3 {
+  line-height: 1.25;
+  margin-top: 1.4em;
+  margin-bottom: 0.6em;
+}
+h1 {
+  page-break-before: always;
+}
+ul, ol {
+  margin-top: 0.6em;
+  margin-bottom: 0.9em;
+}
+li {
+  margin-bottom: 0.3em;
+}
+blockquote {
+  margin: 1em 0;
+  padding-left: 1em;
+  border-left: 0.2em solid #999;
+}
+code, pre {
+  font-family: monospace;
+}
+pre {
+  padding: 0.8em;
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+th, td {
+  border: 1px solid #aaa;
+  padding: 0.4em;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
