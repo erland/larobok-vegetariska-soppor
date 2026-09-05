@@ -5,7 +5,6 @@ import argparse
 import re
 import shutil
 import subprocess
-import sys
 import tempfile
 import zipfile
 from pathlib import Path
@@ -82,9 +81,11 @@ def postprocess_epub(epub: Path) -> None:
             return
         opf = opf_files[0]
         text = opf.read_text(encoding="utf-8")
-        text = re.sub(r'(<itemref\b[^>]*idref="nav"[^>]*)(/?>)',
-                      lambda m: m.group(1) if 'linear=' in m.group(1) else m.group(1) + ' linear="no"' + m.group(2),
-                      text)
+        text = re.sub(
+            r'(<itemref\b[^>]*idref="nav"[^>]*)(/?>)',
+            lambda m: m.group(1) if 'linear=' in m.group(1) else m.group(1) + ' linear="no"' + m.group(2),
+            text,
+        )
         opf.write_text(text, encoding="utf-8")
 
         rebuilt = epub.with_suffix(".tmp.epub")
@@ -146,13 +147,12 @@ def main() -> int:
 
     pdf = output_dir / f"{slug}.pdf"
     with tempfile.TemporaryDirectory(prefix="vegetariska-soppor-pdf-") as tmp_name:
-        front = Path(tmp_name) / "frontmatter.md"
+        front = Path(tmp_name) / "frontmatter.tex"
         title = latex_escape(str(metadata.get("title", "")))
         subtitle = latex_escape(str(metadata.get("subtitle", "")))
         author = latex_escape(str(metadata.get("author", "")))
         cover = (root / metadata["cover_image"]).as_posix()
         front.write_text(
-            "```{=latex}\n"
             "\\pagenumbering{gobble}\n"
             "\\thispagestyle{empty}\n"
             f"\\AddToShipoutPictureBG*{{\\AtPageLowerLeft{{\\includegraphics[width=\\paperwidth,height=\\paperheight]{{{cover}}}}}}}\n"
@@ -165,22 +165,18 @@ def main() -> int:
             "\\vfill\n"
             f"{{\\Large {author}}}\\par\n"
             "\\end{center}\\clearpage\n"
-            "\\pagenumbering{roman}\n"
-            "\\phantomsection\n"
-            "\\pdfbookmark[1]{Innehåll}{toc}\n"
-            "\\tableofcontents\n"
-            "\\clearpage\n"
-            "\\pagenumbering{arabic}\n"
-            "```\n",
+            "\\pagenumbering{roman}\n",
             encoding="utf-8",
         )
         run([
-            "pandoc", str(front), *map(str, chapters),
+            "pandoc", *map(str, chapters),
             "--from=markdown+raw_tex+pipe_tables", "--to=pdf",
             "--pdf-engine=xelatex", "--output", str(pdf),
             "--resource-path", resource_path,
             "--lua-filter", str(chapter_filter),
             "--include-in-header", str(root / "publishing" / "pdf-header.tex"),
+            "--include-before-body", str(front),
+            "--toc", "--toc-depth=1",
             "--metadata", "title=",
         ], root)
 
