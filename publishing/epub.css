@@ -1,0 +1,27 @@
+@charset "UTF-8";
+body {
+  margin: 0 5%;
+  font-family: "Literata", "Charis SIL", "Noto Serif", Georgia, serif;
+  line-height: 1.5;
+  text-align: left;
+  hyphens: auto;
+}
+p { margin: 0 0 0.65em; }
+h1 { margin: 2.2em 0 1.2em; line-height: 1.15; text-align: center; }
+h1.chapter-heading .chapter-number {
+  display: block;
+  font-size: 0.72em;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35em;
+}
+h1.chapter-heading .chapter-title { display: block; }
+h2 { margin: 1.15em 0 0.45em; line-height: 1.2; }
+h3 { margin: 1em 0 0.4em; }
+li { margin-bottom: 0.25em; }
+blockquote { margin: 1em 1.2em; }
+img { max-width: 100%; height: auto; }
+code { white-space: pre-wrap; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 0.35em; vertical-align: top; border-bottom: 1px solid #999; }
