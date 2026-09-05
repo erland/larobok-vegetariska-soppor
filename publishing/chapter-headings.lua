@@ -20,7 +20,7 @@ function Header(el)
 
   if text == "Inledning" and FORMAT:match("latex") then
     return {
-      pandoc.RawBlock("latex", "\\clearpage"),
+      pandoc.RawBlock("latex", "\\clearpage\n\\pagenumbering{arabic}"),
       el
     }
   end
